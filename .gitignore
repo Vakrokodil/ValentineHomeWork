@@ -1,0 +1,5 @@
+/.idea/*.gitignore
+/.idea/*.xml
+/*.iml
+/out/production/ValentineHomeWork/com/valya/homework/*.class
+/out/production/ValentineHomeWork/com/valya/homework/zoo/*.class
