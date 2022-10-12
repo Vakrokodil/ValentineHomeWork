@@ -1,5 +1,16 @@
-/.idea/*.gitignore
-/.idea/*.xml
-/*.iml
-/out/production/ValentineHomeWork/com/valya/homework/*.class
-/out/production/ValentineHomeWork/com/valya/homework/zoo/*.class
+# Compiled class file
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Intellij
+.idea/
+*.iml
+*.iws
