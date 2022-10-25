@@ -36,12 +36,12 @@ public class APIResponseParser {
             }
         }
 
-//        System.out.println(book.getTitle());
-//        System.out.println(book.getAuthor());
-//        System.out.println(book.getPublicationYear());
-//        System.out.println(book.getAverageRating());
-//        System.out.println(book.getRatingsCount());
-//        System.out.println(book.getImageUrl());
+        System.out.println(book.getTitle());
+        System.out.println(book.getAuthor());
+        System.out.println(book.getPublicationYear());
+        System.out.println(book.getAverageRating());
+        System.out.println(book.getRatingsCount());
+        System.out.println(book.getImageUrl());
 
         return book;
     }
@@ -98,6 +98,6 @@ public class APIResponseParser {
                 "</best_book>" +
                 "</work>";
 
-        APIResponseParser.parse(response2);
+        APIResponseParser.parse(response);
     }
 }
