@@ -5,4 +5,9 @@ public class SilverPlan extends HealthInsurancePlan {
     public SilverPlan() {
         setCoverage(getCoverage() + 0.7);
     }
+
+    @Override
+    public String toString() {
+        return "Insurance plan is Silver";
+    }
 }

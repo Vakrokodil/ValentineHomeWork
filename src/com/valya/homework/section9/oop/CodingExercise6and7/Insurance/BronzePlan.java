@@ -5,4 +5,9 @@ public class BronzePlan extends HealthInsurancePlan {
     public BronzePlan() {
         setCoverage(getCoverage() + 0.6);
     }
+
+    @Override
+    public String toString() {
+        return "Insurance plan is Bronze";
+    }
 }

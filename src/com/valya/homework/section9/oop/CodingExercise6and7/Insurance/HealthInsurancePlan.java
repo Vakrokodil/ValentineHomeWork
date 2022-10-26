@@ -1,9 +1,7 @@
 package com.valya.homework.section9.oop.CodingExercise6and7.Insurance;
 
 public class HealthInsurancePlan {
-    // Code for 'coverage' field goes here
     private double coverage;
-
 
     public double getCoverage() {
         return coverage;
