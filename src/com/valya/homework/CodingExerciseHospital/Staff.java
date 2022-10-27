@@ -1,4 +1,4 @@
-package com.valya.homework.section9.oop.CodingExercise6and7;
+package com.valya.homework.CodingExerciseHospital;
 
 public class Staff extends User {
     private long staffId;

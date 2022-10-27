@@ -1,7 +1,11 @@
-package com.valya.homework.section9.oop.CodingExercise6and7.Insurance;
+package com.valya.homework.CodingExerciseHospital.Insurance;
 
-public class HealthInsurancePlan {
+public abstract class HealthInsurancePlan {
     private double coverage;
+    private double discount;
+
+    public HealthInsurancePlan() {
+    }
 
     public double getCoverage() {
         return coverage;
@@ -10,6 +14,16 @@ public class HealthInsurancePlan {
     public void setCoverage(double coverage) {
         this.coverage = coverage;
     }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public abstract double computeMonthlyPremium(double salary);
 
     // Don't worry about the below code and also the InsuranceBrand class
     private InsuranceBrand offeredBy;
@@ -21,4 +35,5 @@ public class HealthInsurancePlan {
     public void setOfferedBy(InsuranceBrand offeredBy) {
         this.offeredBy = offeredBy;
     }
+
 }
