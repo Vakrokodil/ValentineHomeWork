@@ -1,8 +1,12 @@
 package com.valya.homework.CodingExerciseHospital;
 
+import com.valya.homework.CodingExerciseHospital.Insurance.BlueCrossBlueShield;
 import com.valya.homework.CodingExerciseHospital.Insurance.BronzePlan;
+import com.valya.homework.CodingExerciseHospital.Insurance.GoldPlan;
 import com.valya.homework.CodingExerciseHospital.Insurance.HealthInsurancePlan;
+import com.valya.homework.CodingExerciseHospital.Insurance.InsuranceBrand;
 import com.valya.homework.CodingExerciseHospital.Insurance.PlatinumPlan;
+import com.valya.homework.CodingExerciseHospital.Insurance.SilverPlan;
 
 import java.util.Arrays;
 
@@ -10,25 +14,44 @@ public class Billing {
 
     public static void main(String[] args) {
 
-        HealthInsurancePlan insurancePlan = new PlatinumPlan();
-        HealthInsurancePlan insurancePlan2 = new BronzePlan();
-
-        Patient patient = new Patient();
-        Patient patient2 = new Patient();
-        Patient patient3 = new Patient();
-
-        patient.setInsurancePlan(insurancePlan);
-        patient3.setInsurancePlan(insurancePlan2);
+//        Patient patient = new Patient();
+//        HealthInsurancePlan insurancePlan = new PlatinumPlan();
+//        patient.setInsurancePlan(insurancePlan);
+//
+//        double[] paymentsArray = Billing.computePaymentAmount(patient, 1000.0);
+//        System.out.println(Arrays.toString(paymentsArray));
 
 
-        double[] paymentsArray = Billing.computePaymentAmount(patient, 1000.0);
-        System.out.println(Arrays.toString(paymentsArray));
+        User BobKelso = new User();
+        InsuranceBrand insuranceBrandNew = new BlueCrossBlueShield();
+        HealthInsurancePlan insurancePlanNew = new PlatinumPlan();
 
-        double[] paymentsArray2 = Billing.computePaymentAmount(patient2, 500.0);
-        System.out.println(Arrays.toString(paymentsArray2));
+        insurancePlanNew.setOfferedBy(insuranceBrandNew);
+        BobKelso.setInsurancePlan(insurancePlanNew);
+        double premiumBobKeslo = insurancePlanNew.computeMonthlyPremium(5000, 56, true);
 
-        double[] paymentsArray3 = Billing.computePaymentAmount(patient3, 600.0);
-        System.out.println(Arrays.toString(paymentsArray3));
+        System.out.println(premiumBobKeslo);
+
+
+        User Elliot = new User();
+        InsuranceBrand insuranceBrandNew2 = new BlueCrossBlueShield();
+        HealthInsurancePlan insurancePlanNew2 = new SilverPlan();
+
+        insurancePlanNew2.setOfferedBy(insuranceBrandNew2);
+        Elliot.setInsurancePlan(insurancePlanNew2);
+        double premiumElloit = insurancePlanNew2.computeMonthlyPremium(2000, 26, true);
+
+        System.out.println(premiumElloit);
+
+        User JohnDorian = new User();
+        InsuranceBrand insuranceBrandNew3 = new BlueCrossBlueShield();
+        HealthInsurancePlan insurancePlanNew3 = new GoldPlan();
+
+        insurancePlanNew3.setOfferedBy(insuranceBrandNew3);
+        JohnDorian.setInsurancePlan(insurancePlanNew3);
+        double premiumJohnDorian = insurancePlanNew3.computeMonthlyPremium(2000, 28, false);
+
+        System.out.println(premiumJohnDorian);
 
     }
 
@@ -42,7 +65,6 @@ public class Billing {
         HealthInsurancePlan patientInsurancePlan = patient.getInsurancePlan();
 
         if (patientInsurancePlan == null) {
-            //payments[0] = 0;
             payments[1] = amount - COMMON_DISCOUNT;
         } else {
             payments[0] = amount * patientInsurancePlan.getCoverage();

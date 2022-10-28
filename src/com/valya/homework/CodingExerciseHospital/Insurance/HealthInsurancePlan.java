@@ -23,7 +23,7 @@ public abstract class HealthInsurancePlan {
         this.discount = discount;
     }
 
-    public abstract double computeMonthlyPremium(double salary);
+    public abstract double computeMonthlyPremium(double salary, int age, boolean smoking);
 
     // Don't worry about the below code and also the InsuranceBrand class
     private InsuranceBrand offeredBy;

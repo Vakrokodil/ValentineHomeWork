@@ -1,4 +1,7 @@
 package com.valya.homework.CodingExerciseHospital.Insurance;
 
-public class InsuranceBrand {
+public interface InsuranceBrand {
+
+    public double computeMonthlyPremium(HealthInsurancePlan insurancePlan, int age, boolean smoking);
+
 }

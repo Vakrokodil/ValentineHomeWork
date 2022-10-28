@@ -13,8 +13,8 @@ public class GoldPlan extends HealthInsurancePlan {
     }
 
     @Override
-    public double computeMonthlyPremium(double salary) {
-        return salary * GOLD_MONTHLY_PREMIUM;
+    public double computeMonthlyPremium(double salary, int age, boolean smoking) {
+        return GOLD_MONTHLY_PREMIUM * salary + getOfferedBy().computeMonthlyPremium(this, age, smoking);
     }
 
     @Override

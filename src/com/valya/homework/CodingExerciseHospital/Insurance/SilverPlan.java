@@ -13,8 +13,8 @@ public class SilverPlan extends HealthInsurancePlan {
     }
 
     @Override
-    public double computeMonthlyPremium(double salary) {
-        return salary * SILVER_MONTHLY_PREMIUM;
+    public double computeMonthlyPremium(double salary, int age, boolean smoking) {
+        return SILVER_MONTHLY_PREMIUM * salary + getOfferedBy().computeMonthlyPremium(this, age, smoking);
     }
 
     @Override

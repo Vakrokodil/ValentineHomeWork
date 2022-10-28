@@ -13,8 +13,8 @@ public class PlatinumPlan extends HealthInsurancePlan {
     }
 
     @Override
-    public double computeMonthlyPremium(double salary) {
-        return salary * PLATINUM_MONTHLY_PREMIUM;
+    public double computeMonthlyPremium(double salary, int age, boolean smoking) {
+        return PLATINUM_MONTHLY_PREMIUM * salary + getOfferedBy().computeMonthlyPremium(this, age, smoking);
     }
 
     @Override
