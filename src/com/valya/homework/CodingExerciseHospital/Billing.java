@@ -1,7 +1,6 @@
 package com.valya.homework.CodingExerciseHospital;
 
 import com.valya.homework.CodingExerciseHospital.Insurance.BlueCrossBlueShield;
-import com.valya.homework.CodingExerciseHospital.Insurance.BronzePlan;
 import com.valya.homework.CodingExerciseHospital.Insurance.GoldPlan;
 import com.valya.homework.CodingExerciseHospital.Insurance.HealthInsurancePlan;
 import com.valya.homework.CodingExerciseHospital.Insurance.InsuranceBrand;
@@ -30,7 +29,7 @@ public class Billing {
         BobKelso.setInsurancePlan(insurancePlanNew);
         double premiumBobKeslo = insurancePlanNew.computeMonthlyPremium(5000, 56, true);
 
-        System.out.println(premiumBobKeslo);
+        System.out.println("Bob Keslo's premium: " + premiumBobKeslo);
 
 
         User Elliot = new User();
@@ -41,7 +40,7 @@ public class Billing {
         Elliot.setInsurancePlan(insurancePlanNew2);
         double premiumElloit = insurancePlanNew2.computeMonthlyPremium(2000, 26, true);
 
-        System.out.println(premiumElloit);
+        System.out.println("Elliot's premium: " + premiumElloit);
 
         User JohnDorian = new User();
         InsuranceBrand insuranceBrandNew3 = new BlueCrossBlueShield();
@@ -51,7 +50,7 @@ public class Billing {
         JohnDorian.setInsurancePlan(insurancePlanNew3);
         double premiumJohnDorian = insurancePlanNew3.computeMonthlyPremium(2000, 28, false);
 
-        System.out.println(premiumJohnDorian);
+        System.out.println("John Dorian's premium: " + premiumJohnDorian);
 
     }
 
