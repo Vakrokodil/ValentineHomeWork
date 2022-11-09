@@ -1,17 +1,5 @@
 package com.valya.homework.section14.coding11;
 
-/*studentIdList = {1001, 1002}
-
-studentsGrades = { { 'A', 'A', 'A', 'B' }
-
-int[] studentIdList = {1001, 1002, 1003};
-
-char[][] studentsGrades = {{'A', 'A', 'A', 'B'}, {'A', 'B', 'B'}, {'A','B', 'B',  'A',  'B', 'A'}};
-
-*/
-
-import com.valya.homework.section14.myException.PerimeterException;
-
 import java.util.Arrays;
 
 public class StudentUtil {
@@ -20,7 +8,7 @@ public class StudentUtil {
 
         int[] studentIdList = {1001, 1002, 1003};
 
-        char[][] studentsGrades = {{'A', 'A', 'B', 'B'}, {'A', 'C', 'B'}, {'A', 'B', 'C', 'A', 'B', 'A'}};
+        char[][] studentsGrades = {{'A', 'A', 'B', 'B'}, {'A', 'C', 'B'}, {'A', 'B', 'C', 'A', ' ', 'A'}};
 
         //System.out.println(Arrays.toString(calculateGPA(studentIdList, studentsGrades)));
 
