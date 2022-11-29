@@ -41,6 +41,7 @@ public class ClientHandler extends Thread {
             try {
                 clientSocket.close();
                 inputStream.close();
+                outputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
