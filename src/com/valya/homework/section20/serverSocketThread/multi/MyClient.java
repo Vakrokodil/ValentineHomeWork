@@ -25,7 +25,7 @@ public class MyClient {
             String string = "";
             System.out.println("Client enter messages:");
 
-            while (!string.equalsIgnoreCase("Finish")) {
+            while (!string.equalsIgnoreCase("Finish") && !string.equalsIgnoreCase("Shutdown")) {
                 string = reader.readLine();
                 outputStream.writeUTF(string);
 

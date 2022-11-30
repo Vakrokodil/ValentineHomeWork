@@ -1,4 +1,4 @@
-package com.valya.homework.serction16.coding12;
+package com.valya.homework.section16.coding12;
 
 
 import java.util.ArrayDeque;

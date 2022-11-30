@@ -1,4 +1,4 @@
-package com.valya.homework.serction16.coding13;
+package com.valya.homework.section16.coding13;
 
 import java.util.Comparator;
 import java.util.HashSet;

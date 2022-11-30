@@ -1,4 +1,4 @@
-package com.valya.homework.serction16.coding12;
+package com.valya.homework.section16.coding12;
 
 public class Passenger {
     private String firstName;

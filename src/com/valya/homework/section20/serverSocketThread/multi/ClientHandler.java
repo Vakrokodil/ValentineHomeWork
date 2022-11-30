@@ -8,23 +8,28 @@ import java.net.Socket;
 public class ClientHandler extends Thread {
     private final Socket clientSocket;
     private final DataInputStream inputStream;
-
     private final DataOutputStream outputStream;
 
+    private final MultiServer multiServer;
 
-    public ClientHandler(Socket clientSocket, DataInputStream inputStream, DataOutputStream outputStream) {
+
+    public ClientHandler(Socket clientSocket, DataInputStream inputStream, DataOutputStream outputStream, MultiServer multiServer) {
         this.clientSocket = clientSocket;
         this.inputStream = inputStream;
         this.outputStream = outputStream;
+        this.multiServer = multiServer;
     }
 
     @Override
     public void run() {
+
+        boolean isShutdown = false;
+
         try
         {
             String string = "";
 
-            while (!string.equalsIgnoreCase("Finish")) {
+            while (!string.equalsIgnoreCase("Finish") && !string.equalsIgnoreCase("Shutdown")) {
 
                 string = inputStream.readUTF();
                 System.out.println("READ from client message - " +  string);
@@ -32,6 +37,11 @@ public class ClientHandler extends Thread {
                 outputStream.writeUTF("Server reply - " + string + " - OK");
 
             }
+
+            if (string.equalsIgnoreCase("Shutdown")) {
+                isShutdown = true;
+            }
+
             System.out.println("Client disconnected");
             System.out.println("Closing connections.");
 
@@ -42,10 +52,14 @@ public class ClientHandler extends Thread {
                 clientSocket.close();
                 inputStream.close();
                 outputStream.close();
+
+                if (isShutdown) {
+                    multiServer.shutdown();
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
     }
 }
