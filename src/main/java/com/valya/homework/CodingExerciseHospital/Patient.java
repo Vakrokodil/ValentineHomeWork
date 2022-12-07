@@ -1,7 +1,5 @@
 package com.valya.homework.CodingExerciseHospital;
 
-import com.valya.homework.CodingExerciseHospital.Insurance.HealthInsurancePlan;
-
 public class Patient extends User {
     private long patientId;
 

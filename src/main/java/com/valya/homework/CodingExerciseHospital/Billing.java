@@ -7,8 +7,6 @@ import com.valya.homework.CodingExerciseHospital.Insurance.InsuranceBrand;
 import com.valya.homework.CodingExerciseHospital.Insurance.PlatinumPlan;
 import com.valya.homework.CodingExerciseHospital.Insurance.SilverPlan;
 
-import java.util.Arrays;
-
 public class Billing {
 
     public static void main(String[] args) {
