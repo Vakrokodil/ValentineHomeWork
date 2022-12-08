@@ -73,9 +73,9 @@ public class Flight implements Comparable<Flight> {
     public String toString() {
         return "Flight{" +
                 "id=" + id +
-                ", departureCity='" + departureCity + '\'' +
-                ", arrivalCity='" + arrivalCity + '\'' +
-                ", departureTime=" + departureTime +
+                " : " + departureCity +
+                " - " + arrivalCity +
+                " in " + departureTime +
                 '}';
     }
 

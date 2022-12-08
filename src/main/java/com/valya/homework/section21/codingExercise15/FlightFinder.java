@@ -39,7 +39,7 @@ public class FlightFinder {
 
        //время
 
-        LocalDate startDate = LocalDate.of(year, Month.DECEMBER.getValue(), dayOfMonth);
+        LocalDate startDate = LocalDate.of(year, Month.of(month), dayOfMonth);
 
         LocalTime timeStartHour = LocalTime.of(preferredDepartureStartHour, 00, 00);
         LocalTime timeEndHour = LocalTime.of(preferredDepartureEndHour, 00, 00);
@@ -103,20 +103,20 @@ public class FlightFinder {
         Flight f4 = new Flight(4, "4", "Emirates", "San Francisco", "Dubai",
                 LocalDateTime.of(2017, 12, 20, 8, 0), LocalDateTime.of(2017, 12, 20, 8, 0));
         Flight f5 = new Flight(5, "5", "Emirates", "San Francisco", "Dubai",
-                LocalDateTime.of(2017, 12, 20, 10, 0), LocalDateTime.of(2017, 12, 20, 10, 0));
+                LocalDateTime.of(2017, 12, 20, 9, 30), LocalDateTime.of(2017, 12, 20, 9, 30));
         Flight f6 = new Flight(6, "6", "Emirates", "San Francisco", "Dubai",
                 LocalDateTime.of(2017, 12, 20, 11, 30), LocalDateTime.of(2017, 12, 20, 11, 30));
         Flight f7 = new Flight(7, "7", "Emirates", "San Francisco", "Dubai",
                 LocalDateTime.of(2017, 12, 20, 12, 30), LocalDateTime.of(2017, 12, 20, 12, 30));
 
 
-        Flight f8 = new Flight(7, "8", "Emirates", "Dubai", "Mumbai",
+        Flight f11 = new Flight(11, "11", "Emirates", "Dubai", "Mumbai",
                 LocalDateTime.of(2017, 12, 20, 9, 30), LocalDateTime.of(2017, 12, 20, 9, 30));
-        Flight f9 = new Flight(8, "9", "Emirates", "Dubai", "Mumbai",
+        Flight f12 = new Flight(12, "12", "Emirates", "Dubai", "Mumbai",
                 LocalDateTime.of(2017, 12, 20, 10, 30), LocalDateTime.of(2017, 12, 20, 10, 30));
-        Flight f10 = new Flight(9, "10", "Delta", "Dubai", "Mumbai",
+        Flight f13 = new Flight(13, "13", "Delta", "Dubai", "Mumbai",
                 LocalDateTime.of(2017, 12, 20, 12, 0), LocalDateTime.of(2017, 12, 20, 12, 0));
-        Flight f11 = new Flight(10, "11", "Delta", "Dubai", "Mumbai",
+        Flight f14 = new Flight(14, "14", "Delta", "Dubai", "Mumbai",
                 LocalDateTime.of(2017, 12, 20, 14, 0), LocalDateTime.of(2017, 12, 20, 14, 0));
 
 
@@ -124,13 +124,16 @@ public class FlightFinder {
 
         allFlights.put("New York", Arrays.asList(f1));
         allFlights.put("San Francisco", Arrays.asList(f2, f3, f4, f5, f6, f7));
-        allFlights.put("Dubai", Arrays.asList(f8, f9, f10, f11));
+        allFlights.put("Dubai", Arrays.asList(f11, f12, f13, f14));
 
 
         List<NavigableSet<Flight>> result = new FlightFinder(allFlights).findFlights(20, 12, 2017, 9, 13,
                                                                             "San Francisco", "Dubai", "Mumbai",
                                                                             "America/Los_Angeles", "Asia/Dubai");
-        System.out.println(result.toString());
+        //System.out.println(result.toString());
+
+        System.out.println("departingflights" + " : " + result.get(0).toString());
+        System.out.println("connectingflights" + " : " + result.get(1).toString());
 
     }
 }
