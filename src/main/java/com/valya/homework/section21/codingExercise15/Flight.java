@@ -2,7 +2,6 @@ package com.valya.homework.section21.codingExercise15;
 
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class Flight implements Comparable<Flight> {
     private int id;

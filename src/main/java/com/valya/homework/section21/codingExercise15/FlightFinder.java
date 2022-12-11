@@ -4,9 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.NavigableSet;
 import java.util.Objects;
-import java.util.Set;
 import java.util.TreeSet;
 
 import static java.time.temporal.ChronoUnit.MINUTES;
@@ -56,8 +52,8 @@ public class FlightFinder {
         NavigableSet<Flight> departingflights = new TreeSet<>();
 
         for (Flight flight : allDepartingFlights) {
-            if ((flight.getDepartureTime().isEqual(startDateTime) || flight.getDepartureTime().isAfter(startDateTime))
-                    && (flight.getDepartureTime().isEqual(endDateTime) || flight.getDepartureTime().isBefore(endDateTime))
+            if (( flight.getDepartureTime().isAfter(startDateTime))
+                    && ( flight.getDepartureTime().isBefore(endDateTime))
                     && Objects.equals(flight.getArrivalCity(), arrivalCity)) {
 
                 departingflights.add(flight);
