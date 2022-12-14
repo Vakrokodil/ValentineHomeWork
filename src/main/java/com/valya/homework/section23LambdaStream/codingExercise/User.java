@@ -1,15 +1,19 @@
 package com.valya.homework.section23LambdaStream.codingExercise;
 
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Random;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class User {
     private String name;
@@ -23,39 +27,6 @@ class User {
         this.role = role;
     }
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public int getLuck() {
-        return luck;
-    }
-
-    public void setLuck(int luck) {
-        this.luck = luck;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", role='" + role + '\'' +
-                '}';
-    }
-
     public static void main(String[] args) {
         List<User> users = new ArrayList<>();
         users.add(new User("Denis", "mentor"));
@@ -63,25 +34,80 @@ class User {
         users.add(new User("Ekaterina", "intern"));
         users.add(new User("Valentina", "intern"));
 
-        // TODO Task 1: using Predicate to get interns list.
-        getInterns(users);
 
-        // TODO Task 2: using Function to add to the list new user and return a number of users with the same role.
-        System.out.println("-------------------------------------------------");
-        System.out.println(addUserCountSameRole(users, "Ana", "intern"));
-        System.out.println(addUserCountSameRole(users, "Ekaterina", "mentor"));
+//        getInterns(users);
+//        System.out.println("-------------------------------------------------");
+//        System.out.println(addUserCountSameRole(users, "Ana", "intern"));
+//        System.out.println(addUserCountSameRole(users, "Ekaterina", "mentor"));
+//        System.out.println("-------------------------------------------------");
+//        printUser(users,"intern");
+//        System.out.println("-------------------------------------------------");
+//        getLuck(users);
+//        System.out.println(users.get(0).getLuck());
 
-        // TODO Task 3: using Consumer to do pretty output the given user.
-        System.out.println("-------------------------------------------------");
-        printUser(users,"intern");
+        List<User> internList = users.stream().filter(user -> user.getRole().equals("intern")).collect(Collectors.toList());
+        //System.out.println(internList);
+        //System.out.println(users.stream().filter(user -> user.getName().toLowerCase().startsWith("e")).collect(Collectors.toList()));
 
-        // TODO Task 4: Add new field, like "luck". using Supplier to randomly set luck (0 - 100)
-        System.out.println("-------------------------------------------------");
-        getLuck(users);
+        //1 method
+       //System.out.println(changeListNewRole(users, "intern", "software engineer"));
 
-        System.out.println(users.get(0).getLuck());
+        //2 method
+        secondMethod(users, "intern", "software engineer");
+        System.out.println(users);
+
+        //skip & limit
+        System.out.println(getSliceOfStream(users, 1, 3));
+
+        //anyMatch --True, когда хоть один элемент соответствует условиям
+        boolean info = users.stream().anyMatch(user -> (user.getName().length() == 5));
+        System.out.println(info);
+
+        //noneMatch	-- True, когда ни один элемент не соответствует условиям
+        boolean info2 = users.stream().noneMatch(user ->
+                Character.isLowerCase(user.getName().charAt(0))
+                        && Character.isUpperCase(user.getRole().charAt(0)));
+
+        System.out.println(info2);
+
 
     }
+
+    //1
+    public static List<User> changeListNewRole(List<User> users, String oldRole,String newRole) {
+
+        users = users.stream()
+                .map(user -> changeRole(user, oldRole, newRole))
+                .collect(Collectors.toList());
+        return users;
+    }
+
+    public static User changeRole(User user, String oldRole,String newRole) {
+
+        Predicate<User> predicate = u -> u.role.equalsIgnoreCase(oldRole);
+        if(predicate.test(user)) {
+            user.setRole(newRole);
+        }
+        return user;
+    }
+
+    //2
+    public static void secondMethod(List<User> users, String oldRole,String newRole) {
+
+        users.stream()
+                .filter(user -> user.getRole().equalsIgnoreCase(oldRole))
+                .forEach(intern -> intern.setRole(newRole));
+    }
+
+    public static <T> List<T> getSliceOfStream (List<T> list, int skipNumber, int limitNimver) {
+
+        return list.stream()
+                .skip(skipNumber)
+                .limit(limitNimver).collect(Collectors.toList());
+    }
+
+
+
 
     public static void getInterns(List<User> users) {
 
@@ -140,4 +166,39 @@ class User {
              consumer.accept(user);
         }
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public int getLuck() {
+        return luck;
+    }
+
+    public void setLuck(int luck) {
+        this.luck = luck;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
+
 }
+
